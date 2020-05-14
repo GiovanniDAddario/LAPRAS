@@ -109,7 +109,6 @@ class Simulation:
                                     [x_buildings[building]-(building_size[0]/2), x_buildings[building]+(building_size[0]/2)],
                                     [y_buildings[building]-(building_size[1]/2), y_buildings[building]+(building_size[1]/2)]):
                         overlapping = True
-                        print('building on building yikes')
                         break
                 # only appends coordinates of house if not overlapping with any other building
                 if overlapping == False:
@@ -141,7 +140,6 @@ class Simulation:
                                     [x_key_buildings[key_building]-(key_building_size[0]/2), x_key_buildings[key_building]+(key_building_size[0]/2)],
                                     [y_key_buildings[key_building]-(key_building_size[1]/2), y_key_buildings[key_building]+(key_building_size[1]/2)]):
                         overlapping_internal = True
-                        print('key on key yikes')
                         break
                 # checks if any key buildings are overlapping with buildings
                 overlapping_building = False
@@ -154,14 +152,13 @@ class Simulation:
                                         [self.buildinglist[building].position[1]-(self.buildinglist[building].size[1]/2),
                                          self.buildinglist[building].position[1]+(self.buildinglist[building].size[1]/2)]):
                             overlapping_building = True
-                            print('key building on building yikes')
                             break
                 # only appends coordinates of key building if not overlapping with any other building (key or not)
                 if overlapping_internal == False and overlapping_building == False:
                     x_key_buildings.append(x_key_building)
                     y_key_buildings.append(y_key_building)
                 else:
-                    print('retrying')
+                    pass
         # create key buildings
         self.key_buildinglist = [Environment('KeyBuilding'+'_'+str(i),[x_key_buildings[i],y_key_buildings[i]],key_building_size,0,0,5,50) for i in range(len(x_key_buildings))]
 
